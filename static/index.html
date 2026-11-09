@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Explore common meanings, semantic families, grammatical patterns and their exceptions.">
+  <title>Semantic Hierarchy — Explore a word's many meanings</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-inner header-row">
+      <a class="wordmark" href="/" aria-label="Semantic Hierarchy home">
+        <span class="mark" aria-hidden="true"><span>↗</span></span>
+        <span>semantic<span class="wordmark-light">/</span>hierarchy</span>
+      </a>
+      <span class="header-label"><span class="online-indicator"></span> LOCAL WORKSPACE</span>
+    </div>
+  </header>
+  <main class="site-inner page-layout">
+    <div class="intro">
+      <div class="eyebrow"><span class="eyebrow-line"></span> WORDS ARE MORE THAN DEFINITIONS</div>
+      <h1>Find the idea <em>behind</em> the words.</h1>
+      <p>Explore how a word's different meanings connect. Discover shared concepts, see where the connections break down, and learn the patterns that distinguish each use.</p>
+    </div>
+
+    <div class="workspace">
+      <section class="panel form-panel" aria-labelledby="analyze-heading">
+        <div class="panel-heading">
+          <div><div class="section-index">01 / EXPLORE</div><h2 id="analyze-heading">Start an analysis</h2></div>
+          <span class="dot-cluster" aria-hidden="true">✳</span>
+        </div>
+        <form id="analysis-form">
+          <label for="expressions">Words or expressions <span class="required">*</span></label>
+          <textarea id="expressions" name="expressions" rows="5" maxlength="2000" placeholder="sign off&#10;run&#10;set&#10;bank" spellcheck="false" required></textarea>
+          <div class="field-foot"><span>One expression per line</span><span id="word-count">0 words</span></div>
+          <div class="form-grid">
+            <div class="field"><label for="model">Language model</label><select id="model" required></select></div>
+            <div class="field"><label for="reasoning">Reasoning effort</label><select id="reasoning" required></select></div>
+          </div>
+          <p class="model-note" id="model-note"></p>
+          <div class="field output-field"><label for="max-output">Output budget per word</label><select id="max-output"><option value="2000">2,000 tokens</option><option value="4000" selected>4,000 tokens</option><option value="6000">6,000 tokens</option><option value="8000">8,000 tokens</option></select></div>
+          <details class="definitions-panel" id="definitions-panel">
+            <summary><span class="summary-icon">+</span> Supply dictionary definitions <span class="optional">optional</span></summary>
+            <div class="definitions-inner">
+              <p>For one expression, enter one definition per line. For multiple expressions, enter a JSON object mapping each expression to an array of definitions. No dictionary is scraped automatically.</p>
+              <label for="definitions" class="sr-only">Dictionary definitions or JSON mapping</label>
+              <textarea id="definitions" rows="5" placeholder="To conclude a communication.&#10;To approve a proposal."></textarea>
+              <p class="small-hint">Definitions are sent to the chosen model. Keep private or copyrighted material out unless you have permission to use it.</p>
+            </div>
+          </details>
+          <div class="submission-area">
+            <button type="submit" class="primary-button" id="submit-button">Analyze meanings <span aria-hidden="true">↗</span></button>
+            <button type="button" class="secondary-button hidden" id="stop-button">Stop after current word</button>
+            <p class="cost-hint">One billed request per expression. No automatic retries.</p>
+          </div>
+          <div class="message hidden" role="alert" id="form-message"></div>
+        </form>
+      </section>
+
+      <section class="results-column" aria-labelledby="results-heading">
+        <div class="session-strip">
+          <div class="metric"><span class="metric-label">SESSION ANALYSES</span><strong id="session-analyses">0</strong></div>
+          <div class="metric"><span class="metric-label">TOTAL TOKENS</span><strong id="session-tokens">0</strong></div>
+          <div class="metric total-cost"><span class="metric-label">CALCULATED SESSION COST</span><strong id="session-cost">$0.000000</strong></div>
+        </div>
+        <div class="results-heading">
+          <div><div class="section-index">02 / DISCOVER</div><h2 id="results-heading">Your results <span id="result-count" class="result-count">0</span></h2></div>
+          <div class="results-actions"><button class="text-button" type="button" id="export-button" disabled>Export JSON ↗</button><button class="text-button muted" type="button" id="clear-button" disabled>Clear session</button></div>
+        </div>
+        <div id="status" class="status hidden" role="status" aria-live="polite"></div>
+        <div id="results" class="results-list" aria-live="polite">
+          <div class="empty-state" id="empty-state">
+            <div class="empty-symbol" aria-hidden="true"><span class="symbol-main">a</span><span class="symbol-arrow">⟶</span><span class="symbol-main">A</span></div>
+            <h3>A word is a starting point.</h3>
+            <p>Enter a word or phrase to uncover its related meanings, usage patterns, and the ideas that connect them.</p>
+            <div class="example-row"><span>TRY</span><button type="button" data-example="sign off">sign off</button><button type="button" data-example="run">run</button><button type="button" data-example="bank">bank</button></div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer"><div><span class="footer-glyph">✳</span> Built for exploration, not definitive lexicography.</div><div>Token costs use published standard rates and API-reported usage. <a href="https://developers.openai.com/api/docs/pricing" rel="noreferrer" target="_blank">Pricing ↗</a></div></footer>
+  </main>
+</body>
+</html>

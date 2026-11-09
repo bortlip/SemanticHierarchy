@@ -1,0 +1,27 @@
+# Local environments and credentials
+.venv/
+venv/
+.env
+.env.*
+*.key
+*.pem
+# Python build/cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+*.egg-info/
+dist/
+build/
+# Generated analyses and temporary files
+results/
+outputs/
+*.log
+*.tmp
+# Developer caches, IDE settings, and platform clutter
+.ruff_cache/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+coverage.xml
